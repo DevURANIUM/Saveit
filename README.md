@@ -97,6 +97,22 @@ sudo apt install mediainfo -y
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contributions
 
-Contributions are welcome! Feel free to submit a pull request or open an issue for any bugs or feature requests.
+## Support & Contributions
+
+If you encounter any issues or have suggestions for improvement, please reach out via:
+
+- [Telegram](https://t.me/DevURANIUM)
+- [GitHub Issues](https://github.com/DevURANIUM/Saveit/issues)
+
+## Donation Links
+
+Support the project through donations:
+
+- **BTC**: `bc1qcclcp574hnznm0nmdzzf0ta7366svjskttqks3`
+- **TRON**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
+- **USDT-(TRC20)**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
+- **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
+
+---
+
