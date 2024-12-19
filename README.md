@@ -9,16 +9,16 @@ This script automatically saves timed (self-destructing) photos and other media 
 - Automatically forwards the downloaded files to the user's Saved Messages.
 - Handles both document-based media and regular media.
 - Simple command to trigger the download by replying to a message with `.saveit`.  
-  You can change the trigger command by editing **line 25** in the script:
+  To change the trigger command, edit line 25 in the script:
 
   ```python
   @client.on(events.NewMessage(pattern=r'\.saveit'))
   ```
 
-  For example, to use `.s` as the trigger, replace the line with:
+  For example, to change the command to `.mysave`, modify it as follows:
 
   ```python
-  @client.on(events.NewMessage(pattern=r'\.s'))
+  @client.on(events.NewMessage(pattern=r'\.mysave'))
   ```
 ## Requirements
 
