@@ -15,10 +15,10 @@ This script automatically saves timed (self-destructing) photos and other media 
   @client.on(events.NewMessage(pattern=r'\.saveit'))
   ```
 
-  For example, to change the command to `.mysave`, modify it as follows:
+  For example, to change the command to `.s`, modify it as follows:
 
   ```python
-  @client.on(events.NewMessage(pattern=r'\.mysave'))
+  @client.on(events.NewMessage(pattern=r'\.s'))
   ```
 ## Requirements
 
