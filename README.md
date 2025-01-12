@@ -1,4 +1,3 @@
-```markdown
 # Timed Photo Saver for Telegram (Saveit)
 
 This script automatically saves timed (self-destructing) photos and other media from Telegram chats before they disappear. It uses the [Telethon](https://docs.telethon.dev/) library to interact with the Telegram API and download media files, saving them locally and optionally forwarding them to your Saved Messages in Telegram.
@@ -9,8 +8,6 @@ This script automatically saves timed (self-destructing) photos and other media 
 - Saves downloaded media to the `downloads/` folder.
 - Automatically forwards the downloaded files to the user's Saved Messages.
 - Handles both document-based media and regular media.
-- Simple command to trigger the download by replying to a message with `.saveit`.  
-  To change the trigger command, edit the `HANDLER` variable in the `.env` file.
 
 ## Requirements
 
@@ -19,14 +16,13 @@ Before running the script, ensure you have the following installed:
 - **Python 3.9+**
 - Required Python packages:
   - `telethon` (for interacting with Telegram API)
-  - `python-dotenv` (for loading environment variables)
 
 ### Installing the required Python packages
 
 You can install the necessary Python packages by running:
 
 ```bash
-pip install telethon python-dotenv
+pip install telethon
 ```
 
 ## Setup
@@ -44,21 +40,18 @@ pip install telethon python-dotenv
    - Note your `api_id` and `api_hash`.
 
 3. **Configure API credentials**:
-   - Rename the `.env.example` file to `.env`:
+   - Copy the provided `.env.example` file and create a `.env` file:
+     
      ```bash
-     mv .env.example .env
+     cp .env.example .env
      ```
-   - Open the `.env` file and replace the placeholders with your API credentials:
-     ```env
-     API_ID=your_api_id
-     API_HASH=your_api_hash
-     HANDLER=.saveit
+   
+   - Open the `.env` file and replace the placeholders with your `api_id`, `api_hash`, and preferred command handler:
+     
      ```
-
-4. **Run the script**:
-   - Start the script by running:
-     ```bash
-     python3 Saveit.py
+     API_ID=YOUR_API_ID
+     API_HASH=YOUR_API_HASH
+     HANDLER=.saveit  # Change this to any command prefix you prefer, e.g., .s or !save
      ```
 
 ## How to Use
@@ -70,7 +63,7 @@ pip install telethon python-dotenv
    ```
 
 2. **Trigger media download**:
-   - To download a photo or document, reply to a message containing the media in any chat and send `.saveit`. 
+   - To download a photo or document, reply to a message containing the media in any chat and send `.saveit` (or your chosen handler).
    - The media will be saved to the `downloads/` folder on your local system and automatically forwarded to your Saved Messages in Telegram.
 
 ### Example
@@ -81,7 +74,7 @@ pip install telethon python-dotenv
    python3 Saveit.py
    ```
 
-2. In a Telegram chat, reply to a media message with `.saveit` to save it locally and forward it to your Saved Messages.
+2. In a Telegram chat, reply to a media message with `.saveit` (or your chosen handler) to save it locally and forward it to your Saved Messages.
 
 ## Code Overview
 
@@ -92,7 +85,6 @@ pip install telethon python-dotenv
 ## Dependencies
 
 - [Telethon](https://github.com/LonamiWebs/Telethon) - Python library to interact with Telegram's API.
-- [python-dotenv](https://github.com/theskumar/python-dotenv) - Library to load environment variables from `.env` files.
 
 ## License
 
@@ -115,17 +107,3 @@ Support the project through donations:
 - **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
 
 ---
-```
-
----
-
-### فایل `.env.example`:
-
-```env
-# Telegram API credentials
-API_ID=your_api_id
-API_HASH=your_api_hash
-
-# Command handler (e.g., .saveit)
-HANDLER=.saveit
-```
