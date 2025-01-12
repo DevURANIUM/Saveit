@@ -1,3 +1,4 @@
+
 # Timed Photo Saver for Telegram (Saveit)
 
 This script automatically saves timed (self-destructing) photos and other media from Telegram chats before they disappear. It uses the [Telethon](https://docs.telethon.dev/) library to interact with the Telegram API and download media files, saving them locally and optionally forwarding them to your Saved Messages in Telegram.
@@ -23,7 +24,7 @@ You can install the necessary Python packages by running:
 
 ```bash
 pip install telethon
-
+   ```
 
 ## Setup
 
