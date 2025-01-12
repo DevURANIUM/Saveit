@@ -26,6 +26,8 @@ else
     pip install telethon
 fi
 
+# Run the Saveit.py script
 python3 Saveit.py
 
 echo "done."
+
