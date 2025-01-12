@@ -110,4 +110,3 @@ Support the project through donations:
 - **TRON**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
 - **USDT-(TRC20)**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
 - **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
-```
