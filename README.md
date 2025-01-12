@@ -16,7 +16,7 @@ Before running the script, ensure you have the following installed:
 
 - **Python 3.9+**
 - Required Python packages:
-  - `telethon` (for interacting with Telegram API)
+- `telethon` (for interacting with Telegram API)
 
 ### Installing the required Python packages
 
