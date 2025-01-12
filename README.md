@@ -1,3 +1,4 @@
+```markdown
 # Timed Photo Saver for Telegram (Saveit)
 
 This script automatically saves timed (self-destructing) photos and other media from Telegram chats before they disappear. It uses the [Telethon](https://docs.telethon.dev/) library to interact with the Telegram API and download media files, saving them locally and optionally forwarding them to your Saved Messages in Telegram.
@@ -9,17 +10,8 @@ This script automatically saves timed (self-destructing) photos and other media 
 - Automatically forwards the downloaded files to the user's Saved Messages.
 - Handles both document-based media and regular media.
 - Simple command to trigger the download by replying to a message with `.saveit`.  
-  To change the trigger command, edit line 25 in the script:
+  To change the trigger command, edit the `HANDLER` variable in the `.env` file.
 
-  ```python
-  @client.on(events.NewMessage(pattern=r'\.saveit'))
-  ```
-
-  For example, to change the command to `.s`, modify it as follows:
-
-  ```python
-  @client.on(events.NewMessage(pattern=r'\.s'))
-  ```
 ## Requirements
 
 Before running the script, ensure you have the following installed:
@@ -27,14 +19,14 @@ Before running the script, ensure you have the following installed:
 - **Python 3.9+**
 - Required Python packages:
   - `telethon` (for interacting with Telegram API)
-- **FFmpeg** and **Mediainfo** (for media processing, installed automatically if missing)
+  - `python-dotenv` (for loading environment variables)
 
 ### Installing the required Python packages
 
 You can install the necessary Python packages by running:
 
 ```bash
-pip install telethon
+pip install telethon python-dotenv
 ```
 
 ## Setup
@@ -52,14 +44,22 @@ pip install telethon
    - Note your `api_id` and `api_hash`.
 
 3. **Configure API credentials**:
-   - Open the script and replace the following placeholders with your API credentials:
-     ```python
-     api_id = 'your_api_id'
-     api_hash = 'your_api_hash'
+   - Rename the `.env.example` file to `.env`:
+     ```bash
+     mv .env.example .env
+     ```
+   - Open the `.env` file and replace the placeholders with your API credentials:
+     ```env
+     API_ID=your_api_id
+     API_HASH=your_api_hash
+     HANDLER=.saveit
      ```
 
-4. **Install necessary dependencies**:
-   - The script will automatically check for and install the `ffmpeg` and `mediainfo` tools if they are not already installed.
+4. **Run the script**:
+   - Start the script by running:
+     ```bash
+     python3 Saveit.py
+     ```
 
 ## How to Use
 
@@ -88,25 +88,15 @@ pip install telethon
 - **Client Setup**: Initializes the Telegram client using the provided API credentials.
 - **Command Listener**: Listens for `.saveit` commands in Telegram chats, triggered by replying to messages.
 - **Media Handling**: Downloads media files to the local system (`downloads/` folder) and forwards them to the Saved Messages chat.
-- **Dependency Checker**: Ensures that required media tools (`ffmpeg` and `mediainfo`) are installed and installs them if not present.
 
 ## Dependencies
 
 - [Telethon](https://github.com/LonamiWebs/Telethon) - Python library to interact with Telegram's API.
-- **FFmpeg** - A complete solution to record, convert and stream audio and video.
-- **Mediainfo** - A library used to retrieve technical information about media files.
-
-To install FFmpeg and Mediainfo on your system (if not already installed), the script uses the following commands:
-
-```bash
-sudo apt install ffmpeg -y
-sudo apt install mediainfo -y
-```
+- [python-dotenv](https://github.com/theskumar/python-dotenv) - Library to load environment variables from `.env` files.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
 ## Support & Contributions
 
@@ -125,4 +115,17 @@ Support the project through donations:
 - **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
 
 ---
+```
 
+---
+
+### فایل `.env.example`:
+
+```env
+# Telegram API credentials
+API_ID=your_api_id
+API_HASH=your_api_hash
+
+# Command handler (e.g., .saveit)
+HANDLER=.saveit
+```
