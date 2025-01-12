@@ -1,28 +1,21 @@
 from telethon import TelegramClient, events
 import asyncio
 import os
-import subprocess
 import time
 from datetime import datetime as dt
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # API info to get from my.telegram.org
-api_id = 'YOUR_API_ID'
-api_hash = 'YOUR_API_HASH'
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
+handler = os.getenv('HANDLER')
 
 client = TelegramClient('save', api_id, api_hash)
 
-def check_and_install(package, install_command):
-    try:
-        subprocess.run([package, '--version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(f"{package} is already installed.")
-    except subprocess.CalledProcessError:
-        print(f"{package} is not installed. Installing now...")
-        os.system(install_command)
-
-check_and_install('mediainfo', 'apt install mediainfo -y')
-check_and_install('ffmpeg', 'apt install ffmpeg -y')
-
-@client.on(events.NewMessage(pattern=r'\.saveit'))
+@client.on(events.NewMessage(pattern=rf'\{handler}'))
 async def download(event):
     pvpv = event.sender_id
     saved_messages_chat_id = "me"
