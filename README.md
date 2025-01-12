@@ -23,7 +23,7 @@ You can install the necessary Python packages by running:
 
 ```bash
 pip install telethon
-```
+
 
 ## Setup
 
@@ -34,25 +34,29 @@ pip install telethon
    cd Saveit
    ```
 
-2. **Get your Telegram API credentials**:
-   - Go to [my.telegram.org](https://my.telegram.org) and log in.
-   - Navigate to "API development tools."
-   - Note your `api_id` and `api_hash`.
+2. **Run the `run.sh` script**:
+   Instead of manually setting up the environment and installing dependencies, you can use the `run.sh` script to automate the process.
+
+   ```bash
+   chmod +x run.sh
+   ./run.sh
+   ```
+
+   The script will:
+   - Automatically create the `.env` file if it doesn't exist.
+   - Prompt you to enter your Telegram API credentials (`API_ID`, `API_HASH`) and the command handler (e.g., `.saveit`).
+   - Pull the latest changes from the Git repository.
+   - Install or update the required `telethon` package.
+   - Run the `Saveit.py` script.
 
 3. **Configure API credentials**:
-   - Copy the provided `.env.example` file and create a `.env` file:
-     
-     ```bash
-     cp .env.example .env
-     ```
+   If you prefer to configure the API credentials manually, you can open the `.env` file and set the following:
    
-   - Open the `.env` file and replace the placeholders with your `api_id`, `api_hash`, and preferred command handler:
-     
-     ```
-     API_ID=YOUR_API_ID
-     API_HASH=YOUR_API_HASH
-     HANDLER=.saveit  # Change this to any command prefix you prefer, e.g., .s or !save
-     ```
+   ```
+   API_ID=YOUR_API_ID
+   API_HASH=YOUR_API_HASH
+   HANDLER=.saveit  # Change this to any command prefix you prefer, e.g., .s or !save
+   ```
 
 ## How to Use
 
@@ -105,5 +109,4 @@ Support the project through donations:
 - **TRON**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
 - **USDT-(TRC20)**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
 - **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
-
----
+```
