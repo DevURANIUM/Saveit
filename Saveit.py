@@ -14,9 +14,19 @@ api_hash = os.getenv('API_HASH')
 handler = os.getenv('HANDLER')
 
 client = TelegramClient('save', api_id, api_hash)
+your_user_id = None
 
 @client.on(events.NewMessage(pattern=rf'\{handler}'))
 async def download(event):
+    global your_user_id
+
+    if your_user_id is None:
+        me = await client.get_me()
+        your_user_id = me.id
+
+    if event.sender_id != your_user_id:
+        return
+
     pvpv = event.sender_id
     saved_messages_chat_id = "me"
     inpv = await event.client.send_message(pvpv, "Downloading...")
@@ -27,7 +37,7 @@ async def download(event):
         sschat = event.chat_id
     else:
         return await event.reply("Reply to a message with media to save it.", time=8)
-    
+
     await event.delete()
 
     if not (ok and ok.media):
@@ -59,7 +69,7 @@ async def download(event):
     t = int((e - s).seconds * 1000)
 
     if os.path.exists(file_name):
-        await event.client.send_file(saved_messages_chat_id, file_name, caption=f"File saved by {sssender} ")
+        await event.client.send_file(saved_messages_chat_id, file_name, caption=f"File saved by {sssender}")
     else:
         await event.client.send_message(pvpv, "File not found after download.")
 
@@ -67,6 +77,10 @@ async def download(event):
 
 async def main():
     async with client:
+        global your_user_id
+        me = await client.get_me()
+        your_user_id = me.id
+        print(f"Bot is running as user: {me.username} (ID: {your_user_id})")
         await client.run_until_disconnected()
 
 if __name__ == "__main__":
