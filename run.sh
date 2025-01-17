@@ -2,7 +2,7 @@
 
 if [ ! -f ".env" ]; then
     echo "Creating .env file based on .env-example..."
-    cp .env-example .env
+    cp .env.example .env
 
     echo "Please enter your Telegram API credentials:"
     read -p "API_ID: " api_id
