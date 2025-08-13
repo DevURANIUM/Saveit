@@ -38,13 +38,7 @@ git stash || true
 git pull || true
 git stash pop || true
 
-if pip show telethon &> /dev/null; then
-    echo "Telethon is already installed. Checking for updates..."
-    pip install --upgrade telethon
-else
-    echo "Telethon is not installed. Installing now..."
-    pip install telethon
-fi
+pip install --upgrade telethon python-dotenv
 
 echo "Running Saveit.py..."
 python3 Saveit.py
