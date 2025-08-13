@@ -34,44 +34,42 @@ async def download(event):
     if event.reply_to_msg_id:
         ok = await event.get_reply_message()
         sssender = ok.sender_id
-        sschat = event.chat_id
     else:
         return await event.reply("Reply to a message with media to save it.", time=8)
 
     await event.delete()
 
     if not (ok and ok.media):
+        await inpv.edit("No media found in the replied message.")
         return
-
-    s = dt.now()
-    k = time.time()
 
     download_path = "downloads/"
     if not os.path.exists(download_path):
         os.makedirs(download_path)
 
-    if hasattr(ok.media, "document"):
-        file = ok.media.document
-        mime_type = file.mime_type
-        filename = ok.file.name if ok.file.name else "file_unknown"
-
-        try:
-            result = await event.client.download_media(ok, file=f"{download_path}{filename}")
-        except Exception as err:
-            await inpv.edit(f"Failed to download file: {str(err)}")
+    # دانلود فایل
+    try:
+        if hasattr(ok.media, "document") or hasattr(ok.media, "photo"):
+            # save as original file
+            file_path = await event.client.download_media(ok, file=download_path)
+        else:
+            await inpv.edit("Unsupported media type.")
             return
+    except Exception as err:
+        await inpv.edit(f"Failed to download file: {str(err)}")
+        return
 
-        file_name = result
-    else:
-        file_name = await event.client.download_media(ok, download_path)
-
-    e = dt.now()
-    t = int((e - s).seconds * 1000)
-
-    if os.path.exists(file_name):
-        await event.client.send_file(saved_messages_chat_id, file_name, caption=f"File saved by {sssender}")
-    else:
-        await event.client.send_message(pvpv, "File not found after download.")
+    # ارسال به Saved Messages به صورت فایل
+    try:
+        await event.client.send_file(
+            saved_messages_chat_id, 
+            file_path, 
+            caption=f"File saved from {sssender}",
+            force_document=True  # مهم: فایل بدون فشرده شدن ارسال شود
+        )
+    except Exception as err:
+        await inpv.edit(f"Failed to send file to Saved Messages: {str(err)}")
+        return
 
     await inpv.delete()
 
