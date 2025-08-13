@@ -47,8 +47,10 @@ async def download(event):
     if not os.path.exists(download_path):
         os.makedirs(download_path)
 
+    # دانلود فایل
     try:
         if hasattr(ok.media, "document") or hasattr(ok.media, "photo"):
+            # save as original file
             file_path = await event.client.download_media(ok, file=download_path)
         else:
             await inpv.edit("Unsupported media type.")
@@ -57,12 +59,13 @@ async def download(event):
         await inpv.edit(f"Failed to download file: {str(err)}")
         return
 
+    # ارسال به Saved Messages به صورت فایل
     try:
         await event.client.send_file(
             saved_messages_chat_id, 
             file_path, 
             caption=f"File saved from {sssender}",
-            force_document=True
+            force_document=True  # مهم: فایل بدون فشرده شدن ارسال شود
         )
     except Exception as err:
         await inpv.edit(f"Failed to send file to Saved Messages: {str(err)}")
