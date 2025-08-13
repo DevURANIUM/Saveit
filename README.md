@@ -111,9 +111,9 @@ For any issues or suggestions, contact:
 Support the project:
 
 * **BTC**: `bc1qcclcp574hnznm0nmdzzf0ta7366svjskttqks3`
-* * * **LTC**: `ltc1qcrkelw38gjrmg0ptjy2nshqej622kp76het7q0`
+* **LTC**: `ltc1qcrkelw38gjrmg0ptjy2nshqej622kp76het7q0`
 * **XRP**: `rPoK5SBChFPqEiQv1W97LW6FKoJZLipDVQ`
 * **XLM**: `GDMUQREEZNBSTQOT5BV7MYEMXJFV3CYRZXUVOYCTIUZTHUWPHLVASFVD`
 * **TON**: `UQAJH2N0pqpvC9YN841w5NH1dCN9Lakwkpjvoy7vXf-vfqgv`
-* * **TRON**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
+* **TRON**: `TXJqhhwvkrTdnf5HReZf55hEzZuxjto3R4`
 * **USDT(BEP20)**: `0x1591036c4bD05b046532B65Df939fcd7824E18c7`
