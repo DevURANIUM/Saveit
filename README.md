@@ -4,7 +4,7 @@ This script automatically saves timed (self-destructing) photos and other media 
 
 ## Features
 
-* Downloads timed/self-destructing media from Telegram chats.
+* Automatically downloads incoming timed/self-destructing media without requiring a command.
 * Saves downloaded media to the `downloads/` folder.
 * Forwards downloaded media to your Saved Messages **as original files** (no compression).
 * Supports documents, photos, and videos.
@@ -60,6 +60,7 @@ Open the `.env` file and add:
 API_ID=YOUR_API_ID
 API_HASH=YOUR_API_HASH
 HANDLER=.saveit  # Or change to another prefix
+AUTO_SAVE_TIMED=true  # Automatically save incoming disappearing media
 ```
 
 ## How to Use
@@ -72,7 +73,8 @@ python3 Saveit.py
 
 2. **Save media**:
 
-* Reply to any media in Telegram with `.saveit` (or your chosen handler).
+* Timed photos, videos, voice messages, video notes, and files are saved automatically as soon as they arrive.
+* For regular media, reply with `.saveit` (or your chosen handler).
 * The media will be saved to the `downloads/` folder and forwarded to your Saved Messages **as original files**.
 
 ### Example
